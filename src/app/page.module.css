@@ -1,38 +1,326 @@
-.page {
+.header {
+  background: transparent;
+  width: 100%;
+  padding-top: 2rem;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   padding-inline: 5rem;
 }
 
-.Header {
-  background: transparent;
-  width: 100%;
-    padding-top: 2rem;
-  position: absolute;
+.headerMenu {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.HeaderMenu {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.HeaderMenuList {
-  padding-inline: 0.25rem;
+.headerMenuList {
+  padding-inline: 1.25rem;
   cursor: pointer;
+  color: white;
+  transition: text-decoration 0.3s ease;
+}
+
+.headerMenuList:hover {
+  color: #f7b006;
+  text-decoration: underline;
 }
 
 .headerLoginSection {
-  /* display: flex;
+  display: flex;
   flex-direction: row;
-  justify-content: space-between; */
+  justify-content: space-between;
 }
 
 .loginButton {
   margin-right: 1rem;
+  background-color: white;
+  color: #242e8f;
+  font-weight: 700;
+  padding-inline: 1rem;
+  padding-block: 0.25rem;
+  outline: none;
+  border-style: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
 }
 
-.SignUpButton {
+.signUpButton {
   margin-left: 1rem;
+  color: #f7b006;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.poster {
+  background-color: #242e8f;
+  padding-top: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.logoPoster {
+  margin-block: 1rem;
+}
+
+.slogant {
+  color: #f7b006;
+  font-size: 3rem;
+  font-family: Roboto, Serif;
+  margin-block: 2rem;
+}
+
+.disclaimer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.disclaimerText {
+  margin-block: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.poster2 {
+  height: 100vh;
+  background: white;
+  /* background-size: cover;
+  background-position: center;
+  background-attachment: fixed; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.slogant2 {
+  color: #f7b006;
+  font-family: Notable;
+  font-size: 75px;
+  font-weight: bold;
+}
+
+.aboutSection {
+  display: flex;
+  width: 100%;
+  background-color: #242e8f;
+  height: fit-content;
+}
+
+.aboutPic {
+  margin-bottom: 0rem;
+}
+
+.readMore {
+  padding-left: 8rem;
+  padding-top: 4rem;
+  color: white;
+}
+
+.readMoreTitle {
+  color: #f7b006;
+  font-family: Notable;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.readMoreText {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  width: auto;
+}
+
+.readMoreTextLine {
+  font-size: 1.2rem;
+  padding-block: 0.4rem;
+}
+
+.readMoreButtonSection {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+.readMoreButton {
+  font-size: 1rem;
+  font-weight: 600;
+  border-style: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #f7b006;
+  color: #242e8f;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+}
+
+.contactSection {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  color: black;
+  padding-block: 2rem;
+}
+
+.contactLeftSection {
+  width: 50%;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactDisclaimer {
+  font-size: 1.25rem;
+  font-weight: 500;
+  width: 50%;
+  padding-block: 2rem;
+  line-height: 2.25rem;
+}
+
+.spanBlue {
+  color: #242e8f;
+  font-weight: 600;
+}
+
+.spanYellow {
+  color: #f7b006;
+  font-weight: 600;
+}
+
+.contactRightSection {
+  height: 100%;
+  width: 40%;
+}
+
+.contactTitle {
+  color: #242e8f;
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: Roboto, Serif;
+  margin-top: 4rem;
+}
+
+.contactForm {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.contactName {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactEmail {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.contactMessage {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.contactLabel {
+  color: #242e8f;
+  background-color: white;
+  margin-bottom: 0.25rem;
+}
+
+.contactField1 {
+  outline: none;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #242e8f;
+  border-radius: 0.5rem;
+  padding-block: 0.75rem;
+  padding-inline: 1rem;
+  background-color: white;
+  color: black;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.contactField2 {
+  outline: none;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #242e8f;
+  border-radius: 0.5rem;
+  padding-block: 0.75rem;
+  padding-inline: 1rem;
+  background-color: white;
+  color: black;
+  width: 100%;
+  height: 10rem;
+  font-size: 1rem;
+}
+
+.submitButtonSection {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  margin-top: 1rem;
+}
+
+.submitButton {
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #242e8f;
+  padding-inline: 1.25rem;
+  padding-block: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.footerSection {
+  background-color: #f3f4f6;
+  color: black;
+  padding-inline: 6rem;
+  display: flex;
+  justify-content: space-between;
+  padding-block: 2rem;
+}
+
+.footerLinkSection {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigationSection {
+  line-height: 2.5rem;
+}
+
+.navigationSection h3 {
+  color: #242e8f;
+}
+
+.navigationSection p {
+  color: #242e8f;
+  cursor: pointer;
+}
+
+.navigationSection div {
+  color: #242e8f;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
