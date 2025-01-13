@@ -1,0 +1,43 @@
+.main {
+  width: 100%;
+}
+
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-inline: 2rem;
+  padding-block: 0.5rem;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  border-bottom-width: 1px;
+}
+
+.headerLeftSection {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Pridi, sans-serif;
+}
+
+.headerRightSection {
+  display: flex;
+  justify-content: center;
+}
+
+.newAppealButton {
+  background-color: rgb(221, 228, 240);
+  color: #242e8f;
+  font-size: 1rem;
+  font-weight: 600;
+  border-style: none;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  margin-right: 3rem;
+}
+
+.notificationButton {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.7);
+  border-style: none;
+}

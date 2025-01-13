@@ -15,6 +15,7 @@ const pagePaths = {
   Invoices: "/eu/invoices",
   Settings: "/eu/settings",
   Help: "/eu/help",
+  Logout: "/"
 };
 
 export default function RootLayout({
@@ -93,6 +94,16 @@ export default function RootLayout({
             <p className={styles.menuItemLabel}>Help</p>
           </Link>
         </div>
+        <Link
+          className={clsx(styles.menuItem, {
+            [styles.menuItemActive]: currentPath === pagePaths.Logout,
+          })}
+          href={pagePaths.Logout}
+          onClick={() => handleClick(pagePaths.Logout)}
+        >
+          <Icon icon="ic:twotone-log-out" width="30" height="30" />
+          <p className={styles.menuItemLabel}>Logout</p>
+        </Link>
       </div>
       <div className={styles.children}>{children}</div>
     </div>

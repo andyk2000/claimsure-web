@@ -11,6 +11,9 @@
   border-right-style: solid;
   border-right-width: 1px;
   border-right-color: rgb(145, 143, 143);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .profileSection {
@@ -34,7 +37,7 @@
 }
 
 .menuSection {
-    padding-block: 2rem;
+    padding-bottom: 2rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -65,4 +68,9 @@
     cursor: pointer;
     background-color: rgba(36,46,143,0.2);
     border-radius: 0.5rem;
+}
+
+.children {
+    width: 80%;
+    height: 100vh;
 }
