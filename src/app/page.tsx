@@ -1,12 +1,30 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Icon } from "@iconify/react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handlescrolled = () => {
+      const scrolled = window.scrollY > 100;
+      setIsScrolled(scrolled);
+    };
+    window.addEventListener("scroll", handlescrolled);
+    return () => {
+      if (window) {
+        window.removeEventListener("scroll", handlescrolled);
+      }
+    };
+  });
+
   return (
     <div className={styles.page}>
-      <div className={styles.header}>
-        <Image src="/Logo.png" alt="image2" height={75} width={75}></Image>
+      <div
+        className={`${styles.header} ${isScrolled ? styles.headerScrolled : ""}`}
+      >
+        <Image src="/Logo.png" alt="image2" height={50} width={50}></Image>
         <div className={styles.headerMenu}>
           <div className={styles.headerMenuList}>Home</div>
           <div className={styles.headerMenuList}>About Us</div>

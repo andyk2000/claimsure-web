@@ -1,13 +1,18 @@
 .header {
   background: transparent;
   width: 100%;
-  padding-top: 2rem;
+  padding-block: 1.5rem;
   position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-inline: 5rem;
+  transition: background-color 0.5s ease;
+}
+
+.header.headerScrolled {
+  background: #242e8f;
 }
 
 .headerMenu {
@@ -293,7 +298,7 @@
 .footerSection {
   background-color: #f3f4f6;
   color: black;
-  padding-inline: 6rem;
+  padding-inline: 10rem;
   display: flex;
   justify-content: space-between;
   padding-block: 2rem;

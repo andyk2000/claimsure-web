@@ -1,0 +1,68 @@
+.pageContainer {
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  display: flex;
+}
+
+.sideBar {
+  width: 15%;
+  height: 100%;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: rgb(145, 143, 143);
+}
+
+.profileSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 2rem;
+}
+
+.profileName {
+  margin-top: 0.5rem;
+  color: rgb(126, 126, 126);
+  font-size: 0.8rem;
+}
+
+.profileInstitution {
+  margin-top: 0.5rem;
+  color: rgb(26, 26, 26);
+  font-size: 1rem;
+}
+
+.menuSection {
+    padding-block: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.menuItem {
+    display: flex;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    margin-block:0.75rem;
+    color: rgba(36,46,143,0.5);
+    align-items: center;
+    cursor: pointer;
+}
+
+.menuItemLabel {
+    margin-left: 0.75rem;
+}
+
+.menuItemActive {
+    display: flex;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    margin-right: 0.25rem;
+    padding-block:0.75rem;
+    color: rgba(36,46,143,0.8);
+    align-items: center;
+    cursor: pointer;
+    background-color: rgba(36,46,143,0.2);
+    border-radius: 0.5rem;
+}
