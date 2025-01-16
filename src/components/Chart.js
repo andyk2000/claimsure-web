@@ -1,25 +1,21 @@
-"use client"
+"use client";
 
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-  { month: "July", desktop: 100, mobile: 10 },
-]
+  { month: "August", desktop: 127, mobile: 12 },
+  { month: "September", desktop: 200, mobile: 40 },
+  { month: "October", desktop: 151, mobile: 13 },
+  { month: "November", desktop: 137, mobile: 16 },
+  { month: "December", desktop: 91, mobile: 21 },
+  { month: "January", desktop: 52, mobile: 7 },
+];
 
 const chartConfig = {
   desktop: {
@@ -30,7 +26,7 @@ const chartConfig = {
     label: "Denied",
     color: "hsl(var(--chart-1))",
   },
-}
+};
 
 export default function Component() {
   return (
@@ -50,11 +46,11 @@ export default function Component() {
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={2} />
-            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={2} />
+            <Bar dataKey="desktop" fill="#5A6ACF" radius={2} />
+            <Bar dataKey="mobile" fill="#E6E8EC" radius={2} />
           </BarChart>
         </ChartContainer>
       </CardContent>
     </Card>
-  )
+  );
 }

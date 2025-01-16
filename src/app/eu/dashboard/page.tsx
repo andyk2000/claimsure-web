@@ -12,10 +12,7 @@ export default function Dashboard() {
           <p>Welcome back, Dr Bayingana</p>
         </div>
         <div className={styles.headerRightSection}>
-          <button className={styles.newAppealButton}>New Appeal</button>
-          <button className={styles.notificationButton}>
-            <Icon icon="simple-line-icons:bell" width="30" height="25" />
-          </button>
+          <button className={styles.newAppealButton}>New Request</button>
         </div>
       </div>
       <div className={styles.mainSection}>
@@ -80,9 +77,41 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div className={styles.chartSection}>
-            
-            <Chart />
+          <div className={styles.visualizationSection}>
+            <div className={styles.chartSection}>
+              <h2>Monthly approval-Chart</h2>
+              <div className={styles.chartContainer}>
+                <Chart />
+              </div>
+            </div>
+            <div className={styles.chartDescriptionSection}>
+              <p>
+                <span>Total Request Proccessed:</span> 2034
+              </p>
+              <div>
+                <Icon icon="ph:arrow-up" width="16" height="16" />
+                <p>
+                  <span>2.1%</span> vs last month
+                </p>
+              </div>
+              <div>
+                <p>Period Covered:</p>
+                <select id="dropdown" name="options">
+                  <option value="option1">3 Months</option>
+                  <option value="option2">4 Months</option>
+                  <option value="option3">6 months</option>
+                  <option value="option4">1 year</option>
+                </select>
+              </div>
+              <div>
+                <Icon icon="ph:dot-outline-fill" width="24" height="24" />
+                <p> Approved</p>
+              </div>
+              <div>
+                <Icon icon="ph:dot-outline-fill" width="24" height="24" />
+                <p> Denied</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

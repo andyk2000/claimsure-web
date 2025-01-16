@@ -15,7 +15,7 @@ const pagePaths = {
   Invoices: "/eu/invoices",
   Settings: "/eu/settings",
   Help: "/eu/help",
-  Logout: "/"
+  Logout: "/",
 };
 
 export default function RootLayout({
@@ -33,66 +33,68 @@ export default function RootLayout({
   return (
     <div className={styles.pageContainer}>
       <div className={styles.sideBar}>
-        <div className={styles.profileSection}>
-          <Icon
-            icon="ph:user-circle-thin"
-            style={{ color: "#242e8f" }}
-            fontSize={70}
-          />
-          <p className={styles.profileName}>Dr Bayingana JMV</p>
-          <p className={styles.profileInstitution}>@Pharmacare</p>
-        </div>
-        <div className={styles.menuSection}>
-          <Link
-            className={clsx(styles.menuItem, {
-              [styles.menuItemActive]: currentPath === pagePaths.Dashboard,
-            })}
-            href={pagePaths.Dashboard}
-            onClick={() => handleClick(pagePaths.Dashboard)}
-          >
-            <Icon icon="uis:chart" width="30" height="30" />
-            <p className={styles.menuItemLabel}>Dashboard</p>
-          </Link>
-          <Link
-            className={clsx(styles.menuItem, {
-              [styles.menuItemActive]: currentPath === pagePaths.Chat,
-            })}
-            href={pagePaths.Chat}
-            onClick={() => handleClick(pagePaths.Chat)}
-          >
-            <Icon icon="bi:chat-dots-fill" width="30" height="30" />
-            <p className={styles.menuItemLabel}>Chat</p>
-          </Link>
-          <Link
-            className={clsx(styles.menuItem, {
-              [styles.menuItemActive]: currentPath === pagePaths.Invoices,
-            })}
-            href={pagePaths.Invoices}
-            onClick={() => handleClick(pagePaths.Invoices)}
-          >
-            <Icon icon="mingcute:wallet-fill" width="30" height="30" />
-            <p className={styles.menuItemLabel}>Invoices</p>
-          </Link>
-          <Link
-            className={clsx(styles.menuItem, {
-              [styles.menuItemActive]: currentPath === pagePaths.Settings,
-            })}
-            href={pagePaths.Settings}
-            onClick={() => handleClick(pagePaths.Settings)}
-          >
-            <Icon icon="tdesign:setting-1-filled" width="30" height="30" />
-            <p className={styles.menuItemLabel}>Settings</p>
-          </Link>
-          <Link
-            className={clsx(styles.menuItem, {
-              [styles.menuItemActive]: currentPath === pagePaths.Help,
-            })}
-            href={pagePaths.Help}
-            onClick={() => handleClick(pagePaths.Help)}
-          >
-            <Icon icon="basil:info-rect-solid" width="30" height="30" />
-            <p className={styles.menuItemLabel}>Help</p>
-          </Link>
+        <div className={styles.uperSectionSideBar}>
+          <div className={styles.profileSection}>
+            <Icon
+              icon="ph:user-circle-thin"
+              style={{ color: "#242e8f" }}
+              fontSize={70}
+            />
+            <p className={styles.profileName}>Dr Bayingana JMV</p>
+            <p className={styles.profileInstitution}>@Pharmacare</p>
+          </div>
+          <div className={styles.menuSection}>
+            <Link
+              className={clsx(styles.menuItem, {
+                [styles.menuItemActive]: currentPath === pagePaths.Dashboard,
+              })}
+              href={pagePaths.Dashboard}
+              onClick={() => handleClick(pagePaths.Dashboard)}
+            >
+              <Icon icon="uis:chart" width="20" height="20" />
+              <p className={styles.menuItemLabel}>Dashboard</p>
+            </Link>
+            <Link
+              className={clsx(styles.menuItem, {
+                [styles.menuItemActive]: currentPath === pagePaths.Chat,
+              })}
+              href={pagePaths.Chat}
+              onClick={() => handleClick(pagePaths.Chat)}
+            >
+              <Icon icon="bi:chat-dots-fill" width="20" height="20" />
+              <p className={styles.menuItemLabel}>Chat</p>
+            </Link>
+            <Link
+              className={clsx(styles.menuItem, {
+                [styles.menuItemActive]: currentPath === pagePaths.Invoices,
+              })}
+              href={pagePaths.Invoices}
+              onClick={() => handleClick(pagePaths.Invoices)}
+            >
+              <Icon icon="mingcute:wallet-fill" width="20" height="20" />
+              <p className={styles.menuItemLabel}>Invoices</p>
+            </Link>
+            <Link
+              className={clsx(styles.menuItem, {
+                [styles.menuItemActive]: currentPath === pagePaths.Settings,
+              })}
+              href={pagePaths.Settings}
+              onClick={() => handleClick(pagePaths.Settings)}
+            >
+              <Icon icon="tdesign:setting-1-filled" width="20" height="20" />
+              <p className={styles.menuItemLabel}>Settings</p>
+            </Link>
+            <Link
+              className={clsx(styles.menuItem, {
+                [styles.menuItemActive]: currentPath === pagePaths.Help,
+              })}
+              href={pagePaths.Help}
+              onClick={() => handleClick(pagePaths.Help)}
+            >
+              <Icon icon="basil:info-rect-solid" width="20" height="20" />
+              <p className={styles.menuItemLabel}>Help</p>
+            </Link>
+          </div>
         </div>
         <Link
           className={clsx(styles.menuItem, {
@@ -101,7 +103,7 @@ export default function RootLayout({
           href={pagePaths.Logout}
           onClick={() => handleClick(pagePaths.Logout)}
         >
-          <Icon icon="ic:twotone-log-out" width="30" height="30" />
+          <Icon icon="ic:twotone-log-out" width="20" height="20" />
           <p className={styles.menuItemLabel}>Logout</p>
         </Link>
       </div>
