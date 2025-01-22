@@ -2,7 +2,7 @@
 
 import styles from "./page.module.css";
 
-export default function Dashboard() {
+export default function Invoice() {
     return (
         <div className={styles.header}>Invoice</div>
     );

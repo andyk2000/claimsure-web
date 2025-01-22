@@ -1,0 +1,72 @@
+.pageContainer {
+    width: 105%;
+    height: 100vh;
+    margin-left: 1rem;
+}
+
+.backButton {
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.moreButton {
+    cursor: pointer;
+}
+
+.requestTitleSection {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding-block: 0.5rem;
+    align-items: center;
+}
+
+.titleLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(0,0,0,0.7);
+    margin-right: 4rem;
+}
+
+.titleTextInput {
+    background-color: transparent;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0,0,0,0.7);
+    padding-inline: 0.5rem;
+    padding-block: 0.1rem;
+    border-radius: 0.5rem;
+    width: 25rem;
+}
+
+.requestPatientSection {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding-block: 0.5rem;
+    align-items: center;
+}
+
+.patientNameLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(0,0,0,0.7);
+    margin-right: 4rem;
+}
+
+.patientNameTextInput {
+    background-color: transparent;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0,0,0,0.7);
+    padding-inline: 0.5rem;
+    padding-block: 0.1rem;
+    border-radius: 0.5rem;
+    width: 25rem;
+}

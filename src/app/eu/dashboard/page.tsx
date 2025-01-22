@@ -11,9 +11,7 @@ export default function Dashboard() {
         <div className={styles.headerLeftSection}>
           <p>Welcome back, Dr Bayingana</p>
         </div>
-        <div className={styles.headerRightSection}>
-          <button className={styles.newAppealButton}>New Request</button>
-        </div>
+        <button className={styles.newAppealButton}>New Request</button>
       </div>
       <div className={styles.mainSection}>
         <div className={styles.mainLeft}>
@@ -85,18 +83,13 @@ export default function Dashboard() {
               </div>
             </div>
             <div className={styles.chartDescriptionSection}>
-              <p>
-                <span>Total Request Proccessed:</span> 2034
-              </p>
-              <div>
-                <Icon icon="ph:arrow-up" width="16" height="16" />
-                <p>
-                  <span>2.1%</span> vs last month
-                </p>
-              </div>
-              <div>
+              <div className={styles.dropdownContainer}>
                 <p>Period Covered:</p>
-                <select id="dropdown" name="options">
+                <select
+                  id="dropdown"
+                  name="options"
+                  className={styles.dropdownSelector}
+                >
                   <option value="option1">3 Months</option>
                   <option value="option2">4 Months</option>
                   <option value="option3">6 months</option>
@@ -104,14 +97,82 @@ export default function Dashboard() {
                 </select>
               </div>
               <div>
-                <Icon icon="ph:dot-outline-fill" width="24" height="24" />
-                <p> Approved</p>
-              </div>
-              <div>
-                <Icon icon="ph:dot-outline-fill" width="24" height="24" />
-                <p> Denied</p>
+                <h2 className={styles.descriptionTitle}>Description</h2>
+                <p className={styles.descriptonTotalRequest}>
+                  Total Request Proccessed: 2034
+                </p>
+                <div className={styles.descriptionDetails}>
+                  <Icon
+                    icon="ph:arrow-up"
+                    width="16"
+                    height="16"
+                    color="#00be13"
+                  />
+                  <p>
+                    <span>2.1%</span> vs last month
+                  </p>
+                </div>
+                <div className={styles.legend}>
+                  <Icon
+                    icon="ph:dot-outline-fill"
+                    width="30"
+                    height="30"
+                    color="#5A6ACF"
+                  />
+                  <p> Approved</p>
+                </div>
+                <div className={styles.legend}>
+                  <Icon
+                    icon="ph:dot-outline-fill"
+                    width="30"
+                    height="30"
+                    color="#E6E8EC"
+                  />
+                  <p> Denied</p>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className={styles.mainright}>
+          <div className={styles.notificationHeader}>
+            <div className={styles.notificationTitle}>
+              <Icon
+                icon="ph:bell-fill"
+                width="30"
+                height="30"
+                color="#5A6ACF"
+              />
+              <h2>Notifications</h2>
+            </div>
+            <div className={styles.moreNotification}>
+              <p>See All</p>
+              <Icon icon="ph:caret-double-right" width="20" height="20" />
+            </div>
+          </div>
+          <div className={styles.notificationContainer}>
+            <p>No notification yet</p>
+          </div>
+        </div>
+      </div>
+      <div className={styles.latestList}>
+        <div className={styles.listTitle}>Latest Request</div>
+        <div className={styles.listHeader}>
+          <p className={styles.requestTitle}>Request Title</p>
+          <p className={styles.requestName}>patient Name</p>
+          <div className={styles.titleMiddle}>
+            <p className={styles.requestStatus}>Status</p>
+            <p className={styles.requestpriority}>priority</p>
+            <p className={styles.requestAction}>action</p>
+          </div>
+        </div>
+        <div className={styles.listContent}>
+          <p className={styles.rowTitle}>Request Title</p>
+          <p className={styles.rowName}>patient Name</p>
+          <div className={styles.titleMiddle}>
+            <p className={styles.rowStatus}>Status</p>
+            <p className={styles.rowPriority}>priority</p>
+            <p className={styles.rowAction}>action</p>
           </div>
         </div>
       </div>

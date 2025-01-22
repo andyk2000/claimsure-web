@@ -1,0 +1,95 @@
+.pageContainer {
+    background-color: #242E8F;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.imageContainer {
+    width: 40%;
+    height: 100%;
+    margin-top: 10rem;
+    margin-left: 10rem;
+}
+
+.formConatiner {
+    display: flex;
+    flex-direction: column;
+    margin-block: 5rem;
+    background-color: rgba(255,255,255,0.75);
+    padding: 4rem;
+    border-radius: 1rem;
+    width: 40%;
+    height: fit-content;
+}
+
+
+
+.formContainer {
+    width: 100%;
+    height: fit-content;
+}
+
+.fieldInput {
+    width: 100%;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    margin-block: 1rem;
+    background: white;
+    color: rgba(0,0,0,0.75);
+    border-radius: 0.4rem;
+}
+
+.passwordField {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: rgba(0,0,0,0.75);
+    border-radius: 0.4rem;
+    margin-block: 1rem;
+}
+
+.passwordInput {
+    width: 90%;
+    background: transparent;
+    color: rgba(0,0,0,0.75);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+}
+
+.eyeIcon {
+    cursor: pointer;
+    margin-right: 0.4rem;
+}
+
+.errorMessage {
+    color: rgb(204, 0, 0);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.signUpredirect {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(0,0,0,0.75);
+}
+
+.signUpLink {
+    color: #242E8F;
+}
+
+.loginButtonActive {
+    width: 100%;
+    margin-block: 2rem;
+    background-color: #242E8F;
+    color: rgb(240, 240, 240);
+    padding-block: 0.4rem;
+    padding-inline: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0.5rem;
+
+}

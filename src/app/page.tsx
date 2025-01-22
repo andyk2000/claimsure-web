@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,7 +33,7 @@ export default function Home() {
           <div className={styles.headerMenuList}>How It works</div>
         </div>
         <div className={styles.headerLoginSection}>
-          <button className={styles.loginButton}>LOGIN</button>
+          <Link href="/login" className={styles.loginButton}>LOGIN</Link>
           <button className={styles.signUpButton}>SIGN UP</button>
         </div>
       </div>
