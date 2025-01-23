@@ -3,34 +3,57 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { Icon } from "@iconify/react";
 import { useState, useEffect } from "react";
+// import clsx from "clsx";
+import Swal from "sweetalert2";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Link from "next/link";
-import { pageRedirect, login, checkLogged } from "./action";
-import Swal from "sweetalert2";
+import { createUser, getMDFs, pageRedirect } from "./action";
 
 interface User {
   email: string;
   password: string;
+  names: string;
+  institutionId: number;
+  title: string;
+  phone: number;
 }
 
-export default function Login() {
+interface mdfType {
+  name: string;
+  id: number;
+}
+
+export default function Signup() {
   const user = {
     email: "",
     password: "",
+    names: "",
+    institutionId: 1,
+    title: "",
+    phone: 0,
   };
 
   const validationSchema = Yup.object({
+    names: Yup.string().required("* Full names are required"),
     email: Yup.string()
       .email("* Invalid email address")
       .required("* Email is required"),
     password: Yup.string().required("* Password is required"),
+    institutionId: Yup.number().min(1),
+    title: Yup.string().required(),
+    phone: Yup.number().min(720000000),
   });
-
   const [icon, setIcon] = useState("ph:eye-slash-fill");
   const [passwordType, setPasswordType] = useState("password");
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [mdfs, setMdfs] = useState([
+    {
+      name: "",
+      id: 0,
+    },
+  ]);
 
   const changeVisibility = () => {
     setVisible(!visible);
@@ -45,10 +68,7 @@ export default function Login() {
 
   const submitAnswer = async (values: User) => {
     setLoading(true);
-    const result = await login({
-      email: values.email,
-      password: values.password,
-    });
+    const result = await createUser(values);
     console.log(result);
     if (result.message === "failed") {
       Swal.fire({
@@ -63,20 +83,25 @@ export default function Login() {
   };
 
   useEffect(() => {
-    const checkLogin = async () => {
-      const token = localStorage.getItem("token");
-      if (typeof token === "string") {
-        await checkLogged(token);
-      }
+    const getMdfs = async () => {
+      const results = await getMDFs();
+      setMdfs(results.data);
     };
 
-    checkLogin();
+    getMdfs();
   }, []);
 
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.imageContainer}>
-        <Image src="/doctor1.png" alt="doctor-cover" width={350} height={350} />
+      <div className={styles.coverImageContainer}>
+        <div>
+          <Image
+            src="/Doctor2.png"
+            alt="doctor-cover"
+            width={275}
+            height={275}
+          />
+        </div>
       </div>
       <div className={styles.formConatiner}>
         <Formik
@@ -84,7 +109,22 @@ export default function Login() {
           validationSchema={validationSchema}
           onSubmit={submitAnswer}
         >
-          <Form method="post" className={styles.formContainer}>
+          <Form method="post" className={styles.formSubContainer}>
+            <div className={styles.formTitle}>Create an Account</div>
+            <div>
+              <Field
+                type="text"
+                id="names"
+                name="names"
+                placeholder="Full Names"
+                className={styles.fieldInput}
+              />
+              <ErrorMessage
+                name="name"
+                component="div"
+                className={styles.errorMessage}
+              />
+            </div>
             <div>
               <Field
                 type="email"
@@ -94,7 +134,63 @@ export default function Login() {
                 className={styles.fieldInput}
               />
               <ErrorMessage
-                name="email"
+                name="mdf"
+                component="div"
+                className={styles.errorMessage}
+              />
+            </div>
+            <div>
+              <Field
+                type="number"
+                id="phone"
+                name="phone"
+                placeholder="250700000000"
+                className={styles.fieldInput}
+              />
+              <ErrorMessage
+                name="phone"
+                component="div"
+                className={styles.errorMessage}
+              />
+            </div>
+            <div>
+              <Field
+                as="select"
+                id="institutionId"
+                name="institutionId"
+                placeholder="-------------"
+                className={styles.fieldInput}
+              >
+                {mdfs.map((rowData: mdfType, index: number) => (
+                  <>
+                    <option key={index} value={rowData.id}>
+                      {rowData.name}
+                    </option>
+                    ;
+                  </>
+                ))}
+              </Field>
+              <ErrorMessage
+                name="institutionId"
+                component="div"
+                className={styles.errorMessage}
+              />
+            </div>
+            <div>
+              <Field
+                as="select"
+                id="title"
+                name="title"
+                placeholder="-------------"
+                className={styles.fieldInput}
+              >
+                <option value="General Doctor">General Doctor</option>
+                <option value="Surgeon">Surgeon</option>
+                <option value="Pediatric Doctor">Pediatric Doctor</option>
+                <option value="Surgeon">Surgeon</option>
+              </Field>
+              <ErrorMessage
+                name="title"
                 component="div"
                 className={styles.errorMessage}
               />
@@ -125,7 +221,7 @@ export default function Login() {
             </div>
             <div className={styles.signUpredirect}>
               You don’t have an account? Click{" "}
-              <Link href="/signup" className={styles.signUpLink}>
+              <Link href="/login" className={styles.signUpLink}>
                 Here
               </Link>
             </div>
