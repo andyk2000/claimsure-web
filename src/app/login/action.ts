@@ -37,14 +37,15 @@ const login = async (user: User) => {
 
 const checkLogged = async (token: string) => {
   try {
-    const postLink = `${config.backend}/login`;
-    await axios.post(postLink, {
+    const postLink = `${config.backend}/mdfs/`;
+    const response = await axios.post(postLink, {
       headers: {
         Authorizations: token,
       },
     });
     noStore();
     redirect("/");
+    return { success: true, data: response.data };
   } catch (error) {
     console.error("Error fetching data:", error);
     return { success: false, message: "Something went wrong", data: null };

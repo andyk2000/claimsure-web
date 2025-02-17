@@ -1,72 +1,235 @@
 .pageContainer {
-    width: 105%;
-    height: 100vh;
-    margin-left: 1rem;
+  width: 105%;
+  height: 100vh;
+  margin-right: 1rem;
 }
 
 .backButton {
-    cursor: pointer;
+  margin-left: 0.5rem;
+  cursor: pointer;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 0.5rem;
-    padding-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  padding-left: 0.5rem;
 }
 
 .moreButton {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.requestTitleSection {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    padding-block: 0.5rem;
-    align-items: center;
+.formContainer {
+  width: 97%;
+  display: flex;
+  flex-direction: column;
+  margin-inline: 1rem;
+  margin-top: 1rem;
 }
 
-.titleLabel {
-    font-size: 1rem;
-    font-weight: 600;
-    color: rgba(0,0,0,0.7);
-    margin-right: 4rem;
+.titleSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
-.titleTextInput {
-    background-color: transparent;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgba(0,0,0,0.7);
-    padding-inline: 0.5rem;
-    padding-block: 0.1rem;
-    border-radius: 0.5rem;
-    width: 25rem;
+.inputLabel {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #5a6acf;
 }
 
-.requestPatientSection {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    padding-block: 0.5rem;
-    align-items: center;
+.inputFieldSection {
+  width: 85%;
 }
 
-.patientNameLabel {
-    font-size: 1rem;
-    font-weight: 600;
-    color: rgba(0,0,0,0.7);
-    margin-right: 4rem;
+.fieldInput {
+  width: 100%;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1rem;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #5a6acf;
+  border-radius: 0.5rem;
 }
 
-.patientNameTextInput {
-    background-color: transparent;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgba(0,0,0,0.7);
-    padding-inline: 0.5rem;
-    padding-block: 0.1rem;
-    border-radius: 0.5rem;
-    width: 25rem;
+.fieldInputDisabled {
+  width: 100%;
+  background: transparent;
+  color: #5a6acf;
+  background-color: #e6e8ec;
+  font-size: 1rem;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #5a6acf;
+  border-radius: 0.5rem;
+}
+
+.smallFieldInput {
+  width: 5.5rem;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1rem;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #5a6acf;
+  border-radius: 0.5rem;
+}
+
+.smallFieldInputDisabled {
+  width: 5.5rem;
+  background: transparent;
+  color: #5a6acf;
+  background-color: #e6e8ec;
+  font-size: 1rem;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #5a6acf;
+  border-radius: 0.5rem;
+}
+
+.errorMessage {
+  color: rgb(204, 0, 0);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.patientSection {
+  padding-top: 1rem;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.patientIdSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.patientCheckBttn {
+  background: #5a6acf;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.patientNameSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.ageSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.sexSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.requestSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.requestTypeSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.requestPriority {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.priorityLow {
+  color: rgb(3, 185, 58);
+  font-weight: 520;
+}
+
+.priorityMedium {
+  color: rgb(231, 227, 1);
+  font-weight: 520;
+}
+
+.priorityHigh {
+  color: rgb(189, 0, 0);
+  font-weight: 520;
+}
+
+.fieldAreaInput {
+  width: 118%;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1rem;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #5a6acf;
+  border-radius: 0.5rem;
+}
+
+.requestDocumentSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.mediumFieldInput {
+  width: 20rem;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1rem;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #5a6acf;
+  border-radius: 0.5rem;
+}
+
+.submitButton {
+  background-color: #5a6acf;
+  color: white;
+  font-size: 1rem;
+  width: fit-content;
+  padding-inline: 2rem;
+  padding-block: 0.25rem;
+  border-radius: 0.25rem;
+  align-self: end;
+  margin-block: 2rem;
 }

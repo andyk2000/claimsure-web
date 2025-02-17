@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import styles from "./page.module.css";
 import Chart from "@/components/Chart";
+import { navigateNewRequest } from "./action";
 
 export default function Dashboard() {
   return (
@@ -11,7 +12,7 @@ export default function Dashboard() {
         <div className={styles.headerLeftSection}>
           <p>Welcome back, Dr Bayingana</p>
         </div>
-        <button className={styles.newAppealButton}>New Request</button>
+        <button className={styles.newAppealButton} onClick={navigateNewRequest}>New Request</button>
       </div>
       <div className={styles.mainSection}>
         <div className={styles.mainLeft}>
