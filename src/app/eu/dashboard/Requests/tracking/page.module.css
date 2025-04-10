@@ -1,0 +1,182 @@
+.pageContainer {
+  width: 105%;
+  height: 100vh;
+  margin-right: 1rem;
+}
+
+.backButton {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.moreButton {
+  cursor: pointer;
+}
+
+.pageBody {
+  margin-left: 5%;
+  margin-top: 2rem;
+  height: 100%;
+}
+
+.bodySection {
+  display: flex;
+}
+
+.progressbarContainer {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 2px;
+}
+
+.progressBar {
+  content: "";
+  position: fixed;
+  background-color: #5a6acf;
+  height: 20vh;
+  width: 2px;
+  transform: transalateY(-50%);
+  transition: all 0.8s ease-in;
+  z-index: 1;
+}
+
+.iconContainer-active {
+  height: 3rem;
+  width: 3rem;
+  background: #5a6acf;
+  color: white;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+
+.iconContainerDone {
+  height: 2.5rem;
+  width: 2.5rem;
+  background: #5a6acf;
+  color: white;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+
+.iconContainerActive {
+  height: 2.5rem;
+  width: 2.5rem;
+  background: white;
+  border-color: #5a6acf;
+  border-style: solid;
+  border-width: 1px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+
+.iconContainerInactive {
+  height: 2.5rem;
+  width: 2.5rem;
+  background: rgb(255, 255, 255);
+  border-color: rgba(0, 0, 0, 0.4);
+  border-style: solid;
+  border-width: 1px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+
+.sentIcon {
+  margin-left: -0.1rem;
+}
+
+.progressInfoContainer {
+  margin-left: 4rem;
+  width: 50%;
+}
+
+.requestTitle,
+.requestPatientID,
+.requestPriority,
+.requestType,
+.requestTime {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 1rem;
+}
+
+.requestTileLabel,
+.requestPatientIDLabel,
+.requestPriorityLabel,
+.requestTypeLabel,
+.requestTimeLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.requestTitleData,
+.requestPatientIDData,
+.requestTypeData,
+.requestTimeeData {
+  width: 60%;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
+
+.requestPriorityDataContainer {
+  width: 60%;
+  font-size: 0.9rem;
+  color: rgb(189, 0, 0);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  height: fit-content;
+}
+
+.requestPriorityData {
+  background: rgba(255, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  padding-right: 0.75rem;
+  border-radius: 1rem;
+}
+
+.statusTitle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-block: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.requestPriorityData {
+  display: flex;
+}

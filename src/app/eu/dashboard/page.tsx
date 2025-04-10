@@ -12,7 +12,9 @@ export default function Dashboard() {
         <div className={styles.headerLeftSection}>
           <p>Welcome back, Dr Bayingana</p>
         </div>
-        <button className={styles.newAppealButton} onClick={navigateNewRequest}>New Request</button>
+        <button className={styles.newAppealButton} onClick={navigateNewRequest}>
+          New Request
+        </button>
       </div>
       <div className={styles.mainSection}>
         <div className={styles.mainLeft}>
@@ -157,23 +159,39 @@ export default function Dashboard() {
         </div>
       </div>
       <div className={styles.latestList}>
-        <div className={styles.listTitle}>Latest Request</div>
+        <div className={styles.listTitleContainer}>
+          <p className={styles.listTitle}>Latest Request</p>
+          <div className={styles.moreRequests}>
+            <p>See All</p>
+            <Icon icon="ph:caret-double-right" width="20" height="20" />
+          </div>
+        </div>
         <div className={styles.listHeader}>
           <p className={styles.requestTitle}>Request Title</p>
           <p className={styles.requestName}>patient Name</p>
           <div className={styles.titleMiddle}>
+            <p className={styles.requestPriority}>Priority</p>
             <p className={styles.requestStatus}>Status</p>
-            <p className={styles.requestpriority}>priority</p>
             <p className={styles.requestAction}>action</p>
           </div>
         </div>
         <div className={styles.listContent}>
-          <p className={styles.rowTitle}>Request Title</p>
-          <p className={styles.rowName}>patient Name</p>
-          <div className={styles.titleMiddle}>
-            <p className={styles.rowStatus}>Status</p>
-            <p className={styles.rowPriority}>priority</p>
-            <p className={styles.rowAction}>action</p>
+          <div className={styles.listRecord}>
+            <p className={styles.rowTitle}>request for dialisis</p>
+            <p className={styles.rowName}>Marianne</p>
+            <div className={styles.titleMiddle}>
+              <div className={styles.rowPriority}>
+                <Icon
+                  icon="ph:dot-outline-fill"
+                  width="25"
+                  height="25"
+                  color="rgb(189, 0, 0)"
+                />
+                <p>high</p>
+              </div>
+              <p className={styles.rowStatus}>pending</p>
+              <p className={styles.rowAction}>action</p>
+            </div>
           </div>
         </div>
       </div>

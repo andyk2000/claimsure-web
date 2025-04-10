@@ -22,7 +22,7 @@ const config: Config = {
 };
 
 const getMDFs = async () => {
-  const postLink = `${config.backend}mdfs/`;
+  const postLink = `${config.backend}/mdfs/`;
   try {
     const response = await axios.get(postLink);
     console.log(response.data);

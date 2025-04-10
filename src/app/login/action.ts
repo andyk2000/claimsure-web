@@ -23,7 +23,7 @@ const config: Config = {
 };
 
 const login = async (user: User) => {
-  const postLink = `${config.backend}/login`;
+  const postLink = `${config.backend}/home/login`;
   try {
     const response = await axios.post(postLink, user);
     console.log(response.data);

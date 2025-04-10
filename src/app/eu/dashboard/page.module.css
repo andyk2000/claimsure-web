@@ -211,7 +211,7 @@
 
 .legend p {
   font-size: 0.8rem;
-  color:rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .mainright {
@@ -255,7 +255,7 @@
 }
 
 .notificationContainer {
-  width:100%;
+  width: 100%;
   height: 80%;
   display: flex;
   flex-direction: column;
@@ -267,51 +267,98 @@
   margin-inline: 2rem;
 }
 
+.listTitleContainer {
+  display: flex;
+  align-items: center;
+}
+
 .listTitle {
   font-size: 1.2rem;
   font-weight: 700;
   padding-block: 1rem;
   color: rgba(0, 0, 0, 0.7);
+  margin-right: 1rem;
+}
+
+.moreRequests {
+  color: #5a6acf;
+  display: flex;
+  cursor: pointer;
+}
+
+.moreRequests p:hover{
+  text-decoration: underline;
 }
 
 .listHeader {
   display: flex;
-  justify-content: space-between;
   font-size: 1rem;
   font-weight: 600;
-  color:rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.requestName {
+  width: 29.5%;
+}
+
+.requestTitle {
+  width: 40%;
 }
 
 .titleMiddle {
   display: flex;
   justify-content: space-between;
+  width: 30%;
 }
 
-.requestStatus{
-  width: 7rem;
+.requestStatus {
+  width: 18%;
 }
 
 .requestPriority {
-  width: 7rem;
+  width: 20%;
 }
 
 .requestAction {
-  width: 15rem;
+  width: 10%;
 }
 
-.titleMiddle {
-  display: flex;
-  justify-content: space-between;
+.rowTitle {
+  width: 40%;
 }
 
-.rowStatus{
-  width: 7rem;
+.rowName {
+  width: 29%;
 }
 
 .rowPriority {
-  width: 7rem;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  background: rgba(212, 0, 0, 0.3);
+  padding-right: 0.6rem;
+  padding-block: -0.5rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  color: rgba(189, 0, 0, 0.7);
+}
+
+.rowStatus {
+  width: 10%;
 }
 
 .rowAction {
-  width: 15rem;
+  width: 10%;
+}
+
+.listRecord {
+  display: flex;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  margin-block: 0.5rem;
+}
+
+.listContent {
+  width: 100%;
 }
