@@ -17,15 +17,16 @@ const navigateNewRequest = () => {
 };
 
 const getRequests = async () => {
-  const postLink = `${config.backend}request/get/dID`;
+  const postLink = `${config.backend}/request/get/dID`;
   try {
-    const response = await axios.get(postLink);
-    console.log(response.data);
+    const response = await axios.post(postLink, {
+      id: 1,
+    });
     noStore();
     return { success: true, data: response.data };
   } catch (error) {
     console.error("Error fetching data:", error);
-    return { success: false, message: "Error:", data: null };
+    return { success: false, message: "Error:", data: [] };
   }
 };
 

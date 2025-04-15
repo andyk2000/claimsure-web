@@ -1,17 +1,20 @@
 "use client";
 
 import styles from "./page.module.css";
-import { navigateNewRequest } from "./action";
+import { navigateNewRequest, getRequests } from "./action";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import DataTable from "react-data-table-component";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface Row {
+  patient: { names: string };
   title: string;
   patientName: string;
   priority: string;
   status: string;
   requestId: number;
+  id: number;
 }
 
 const columns = [
@@ -19,10 +22,22 @@ const columns = [
     name: "Title",
     selector: (row: Row) => row.title,
     sortable: true,
+    cell: (row: Row) => (
+      <span
+        style={{
+          color: "blue",
+          textDecoration: "underline",
+          cursor: "pointer",
+        }}
+        onClick={() => handleClick(row.id)}
+      >
+        {row.title}
+      </span>
+    ),
   },
   {
     name: "Patient",
-    selector: (row: Row) => row.patientName,
+    selector: (row: Row) => row.patient.names,
     sortable: true,
   },
   {
@@ -35,26 +50,23 @@ const columns = [
     selector: (row: Row) => row.status,
     sortable: true,
   },
-  //   {
-  //     name: "Actions",
-  //     cell: (row: Row) => (
-  //       <button
-  //         onClick={() => handleUpdateArticle(row.requestId)}
-  //         className="update-container"
-  //       ></button>
-  //     ),
-  //     button: true,
-  //   },
 ];
 
 export default function Requests() {
-  //     const [records, setRecords] = useState([])
+  const router = useRouter();
 
-  //   useEffect(() => {
-  //     const getInitialData = () => {
-  //         setRecords(getRequests.data)
-  //     }
-  //   }, []);
+  const handleClick = (id: number) => {};
+
+  const [records, setRecords] = useState([]);
+  useEffect(() => {
+    const getInitialData = async () => {
+      const results = await getRequests();
+      if (results.data.length > 0) {
+        setRecords(results.data);
+      }
+    };
+    getInitialData();
+  }, []);
 
   return (
     <div className={styles.header}>
@@ -84,7 +96,7 @@ export default function Requests() {
         <DataTable
           className="table"
           columns={columns}
-          data={[]}
+          data={records}
           selectableRows
           fixedHeader
           pagination
