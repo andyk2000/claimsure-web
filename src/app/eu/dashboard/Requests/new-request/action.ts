@@ -37,7 +37,7 @@ const createrequest = async (requestData: Request, token: string) => {
 };
 
 const getPatient = async (patientId: number, token: string) => {
-  const postLink = `${config.backend}/patient/get-patient-personal-Id`;
+  const postLink = `${config.backend}/patient/get-patient-Id`;
   try {
     const response = await axios.post(
       postLink,

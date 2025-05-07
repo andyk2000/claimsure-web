@@ -17,6 +17,10 @@ interface Request {
   resources: string;
   status: string;
   date: string;
+  typeofRequest: string;
+  priority: string;
+  attachments?: string[];
+  patientId: number;
 }
 
 interface Patient {
@@ -27,6 +31,8 @@ interface Patient {
 }
 
 export default function NewRequest() {
+  const [preview, setPreview] = useState<string[]>([]);
+  const [logoFile, setLogoFile] = useState("...");
   const [request] = useState({
     id: 0,
     doctorId: 0,
@@ -36,6 +42,10 @@ export default function NewRequest() {
     resources: "",
     status: "",
     date: "02-12-2025",
+    typeofRequest: "",
+    priority: "",
+    patientId: 0,
+    attachments: [],
   });
 
   const [patient, setPatient] = useState<Patient>({
@@ -44,6 +54,25 @@ export default function NewRequest() {
     names: "",
     sex: "",
   });
+
+  const handleImageChange = (event: {
+    target?: { dispatchEvent: (arg0: Event) => void };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    currentTarget?: any;
+  }) => {
+    const file = event.currentTarget.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setLogoFile(reader.result as string);
+        setPreview([...preview, reader.result as string]);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setPreview([]);
+      setLogoFile("");
+    }
+  };
 
   const validationSchema = Yup.object({
     id: Yup.number().min(1).required("* The patient Id is needed"),
@@ -63,7 +92,7 @@ export default function NewRequest() {
   });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const checkUSer = async (values: { id: number }, {setFieldValue}: any) => {
+  const checkUSer = async (values: { id: number }, { setFieldValue }: any) => {
     const token = localStorage.getItem("token") || "";
     console.log(values);
     try {
@@ -76,7 +105,7 @@ export default function NewRequest() {
         });
       } else {
         setPatient(result.data);
-        setFieldValue("names", result.data.names);
+        setFieldValue("names", result.data.patient.names);
         setFieldValue("age", result.data.patient.age);
         setFieldValue("sex", result.data.patient.sex);
       }
@@ -92,7 +121,11 @@ export default function NewRequest() {
 
   const submitAnswer = async (values: Request) => {
     const token = localStorage.getItem("token") || "";
-    const result = await createrequest(values, token);
+    const updatedRequest = {
+      ...values,
+      attachments: preview,
+    };
+    const result = await createrequest(updatedRequest, token);
 
     if (result.success) {
       Swal.fire({
@@ -191,9 +224,9 @@ export default function NewRequest() {
                 <div className={styles.inputFieldSection}>
                   <Field
                     type="text"
-                    id="patientId"
-                    name="patientId"
-                    placeholder="M"
+                    id="sex"
+                    name="sex"
+                    placeholder="-----"
                     className={styles.smallFieldInputDisabled}
                     disabled
                   />
@@ -307,6 +340,14 @@ export default function NewRequest() {
                   type="file"
                   id="details"
                   name="details"
+                  onChange={(event: {
+                    target: { dispatchEvent: (arg0: Event) => void };
+                  }) => {
+                    handleImageChange(event);
+                    event.target.dispatchEvent(
+                      new Event("input", { bubbles: true })
+                    );
+                  }}
                   className={styles.mediumFieldInput}
                 />
                 <ErrorMessage
@@ -314,6 +355,29 @@ export default function NewRequest() {
                   component="div"
                   className={styles.errorMessage}
                 />
+                <div className={styles.attachmentPreviewSection}>
+                  {preview.map((item: string, index: number) => (
+                    <div className={styles.attachmentPreview} key={index}>
+                      <img
+                        key={index}
+                        src={item}
+                        alt={`Preview ${index}`}
+                        className={styles.attachmentImage}
+                      />
+                      <Icon
+                        icon="ph:x-bold"
+                        width="25"
+                        height="25"
+                        className={styles.attachmentDelete}
+                        onClick={() => {
+                          const newPreview = [...preview];
+                          newPreview.splice(index, 1);
+                          setPreview(newPreview);
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

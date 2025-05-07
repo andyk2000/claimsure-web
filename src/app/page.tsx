@@ -49,26 +49,26 @@ export default function Home() {
           Get your healthcare services faster
         </div>
         <div className={styles.disclaimer}>
-          <text className={styles.disclaimerText}>
+          <p className={styles.disclaimerText}>
             CLAIMSURE is a platform that connects RSSB with everyone, get the
             very best of{" "}
-          </text>
-          <text className={styles.disclaimerText}>
+          </p>
+          <p className={styles.disclaimerText}>
             medical care with the very best insurance company, serving over 13
             millions
-          </text>
-          <text className={styles.disclaimerText}>
+          </p>
+          <p className={styles.disclaimerText}>
             people from all across Rwanda.
-          </text>
-          <text className={styles.disclaimerText}>
+          </p>
+          <p className={styles.disclaimerText}>
             Your health insurance is now faster than ever.
-          </text>
+          </p>
         </div>
       </div>
       <div className={styles.poster2}>
-        <text className={styles.slogant2}>
+        <p className={styles.slogant2}>
           Our mission is a healthy society
-        </text>
+        </p>
       </div>
       <div className={styles.aboutSection}>
         <div className={styles.aboutPicSection}>
@@ -81,23 +81,23 @@ export default function Home() {
           ></Image>
         </div>
         <div className={styles.readMore}>
-          <text className={styles.readMoreTitle}>
+          <p className={styles.readMoreTitle}>
             Get the best out of Claimsure
-          </text>
+          </p>
           <div className={styles.readMoreText}>
-            <text className={styles.readMoreTextLine}>
+            <p className={styles.readMoreTextLine}>
               Do you wish to bring the best out of this platform?
-            </text>
-            <text className={styles.readMoreTextLine}>
+            </p>
+            <p className={styles.readMoreTextLine}>
               Learn how to use the platform with our under 35 minute training
-            </text>
-            <text className={styles.readMoreTextLine}>platform.</text>
-            <text className={styles.readMoreTextLine}>
+            </p>
+            <p className={styles.readMoreTextLine}>platform.</p>
+            <p className={styles.readMoreTextLine}>
               Learn how to use this tool.
-            </text>
-            <text className={styles.readMoreTextLine}>
+            </p>
+            <p className={styles.readMoreTextLine}>
               Get a feel of a good health insurance.
-            </text>
+            </p>
           </div>
           <div className={styles.readMoreButtonSection}>
             <button className={styles.readMoreButton}>Read More</button>
@@ -107,25 +107,25 @@ export default function Home() {
       <div className={styles.contactSection}>
         <div className={styles.contactLeftSection}>
           <Image src="/Logo2.png" alt="Logo2" height={100} width={100}></Image>
-          <text className={styles.contactDisclaimer}>
+          <p className={styles.contactDisclaimer}>
             You have any question need clarification, any input to provide tous,
             don’t hesitate to <span className={styles.spanBlue}>contact</span>{" "}
             <span className={styles.spanYellow}>us.</span>
-          </text>
+          </p>
         </div>
         <div className={styles.contactRightSection}>
-          <text className={styles.contactTitle}>Contact Us</text>
+          <p className={styles.contactTitle}>Contact Us</p>
           <div className={styles.contactForm}>
             <div className={styles.contactName}>
-              <text className={styles.contactLabel}>Full Name</text>
+              <p className={styles.contactLabel}>Full Name</p>
               <input className={styles.contactField1} />
             </div>
             <div className={styles.contactEmail}>
-              <text className={styles.contactLabel}>Email</text>
+              <p className={styles.contactLabel}>Email</p>
               <input className={styles.contactField1} />
             </div>
             <div className={styles.contactMessage}>
-              <text className={styles.contactLabel}>Message</text>
+              <p className={styles.contactLabel}>Message</p>
               <textarea className={styles.contactField2} />
             </div>
             <div className={styles.submitButtonSection}>
