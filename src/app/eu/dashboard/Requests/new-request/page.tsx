@@ -15,7 +15,7 @@ interface Request {
   title: string;
   description: string;
   resources: string;
-  status: string;
+  status: number;
   date: string;
   typeofRequest: string;
   priority: string;
@@ -24,6 +24,7 @@ interface Request {
 }
 
 interface Patient {
+  patientIdentification: any;
   id: number;
   names: string;
   age: number;
@@ -40,7 +41,7 @@ export default function NewRequest() {
     title: "",
     description: "",
     resources: "",
-    status: "",
+    status: 1,
     date: "02-12-2025",
     typeofRequest: "",
     priority: "",
@@ -51,8 +52,9 @@ export default function NewRequest() {
   const [patient, setPatient] = useState<Patient>({
     id: 1,
     age: 0,
-    names: "",
-    sex: "",
+    names: ".",
+    sex: ".",
+    patientIdentification: 0,
   });
 
   const handleImageChange = (event: {
@@ -75,16 +77,16 @@ export default function NewRequest() {
   };
 
   const validationSchema = Yup.object({
-    id: Yup.number().min(1).required("* The patient Id is needed"),
-    doctorId: Yup.number()
-      .min(1)
-      .required("* The doctor of the request is needed"),
-    medicalFacilityId: Yup.number()
-      .min(1)
-      .required("* The medical facility of the request is needed"),
-    title: Yup.string().required("* The title of the request is needed"),
-    description: Yup.string().required("Add a description of the treatment"),
-    resources: Yup.object(),
+    // id: Yup.number().min(1).required("* The patient Id is needed"),
+    // doctorId: Yup.number()
+    //   .min(1)
+    //   .required("* The doctor of the request is needed"),
+    // medicalFacilityId: Yup.number()
+    //   .min(1)
+    //   .required("* The medical facility of the request is needed"),
+    // title: Yup.string().required("* The title of the request is needed"),
+    // description: Yup.string().required("Add a description of the treatment"),
+    // resources: Yup.object(),
   });
 
   const validationSchema2 = Yup.object({
@@ -97,6 +99,7 @@ export default function NewRequest() {
     console.log(values);
     try {
       const result = await getPatient(values.id, token);
+      console.log(result.data);
       if (!result.success) {
         Swal.fire({
           title: "Patient not found",
@@ -104,11 +107,13 @@ export default function NewRequest() {
           icon: "error",
         });
       } else {
-        setPatient(result.data);
+        setPatient(result.data.patient);
+        setFieldValue("id", result.data.patient.patientIdentification);
         setFieldValue("names", result.data.patient.names);
         setFieldValue("age", result.data.patient.age);
         setFieldValue("sex", result.data.patient.sex);
       }
+      console.log(result.data);
     } catch (error) {
       console.error("Error fetching patient:", error);
       Swal.fire({
@@ -120,11 +125,25 @@ export default function NewRequest() {
   };
 
   const submitAnswer = async (values: Request) => {
+    if (!patient.id) {
+      Swal.fire({
+        title: "Error",
+        text: "Patient ID is missing. Please check the patient details.",
+        icon: "error",
+      });
+      return;
+    }
     const token = localStorage.getItem("token") || "";
     const updatedRequest = {
       ...values,
+      patientId: patient.patientIdentification,
+      doctorId: 1,
+      medicalFacilityId: 6,
+      status: 1,
       attachments: preview,
     };
+    console.log(updatedRequest);
+    console.log(patient);
     const result = await createrequest(updatedRequest, token);
 
     if (result.success) {
@@ -241,6 +260,7 @@ export default function NewRequest() {
         initialValues={request}
         validationSchema={validationSchema}
         onSubmit={submitAnswer}
+        enableReinitialize={true}
       >
         <Form method="post" className={styles.formContainer}>
           <div className={styles.titleSection}>

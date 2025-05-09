@@ -13,7 +13,7 @@ interface Request {
   title: string;
   description: string;
   resources: string;
-  status: string;
+  status: number;
   date: string;
 }
 
@@ -23,6 +23,7 @@ const config: Config = {
 
 const createrequest = async (requestData: Request, token: string) => {
   const postLink = `${config.backend}/requests/new-request`;
+  console.log(requestData);
   try {
     const response = await axios.post(postLink, requestData, {
       headers: {
