@@ -1,0 +1,77 @@
+.container {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: #242e8f;
+  margin: 0;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.categoryCard {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.categoryCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.categoryIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background-color: #f3f4f6;
+  color: #242e8f;
+  margin-right: 1rem;
+}
+
+.categoryContent {
+  flex: 1;
+}
+
+.categoryTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #111827;
+  margin: 0 0 0.25rem 0;
+}
+
+.categoryDescription {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.categoryArrow {
+  color: #9ca3af;
+}

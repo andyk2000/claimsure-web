@@ -1,0 +1,237 @@
+.pageHeader {
+  display: flex;
+  width: 105%;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 0.75rem;
+}
+
+.backButton {
+  margin-left: 1rem;
+}
+
+.backButton:hover {
+  cursor: pointer;
+}
+
+.pageRequestDataSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem;
+}
+
+.pageRequestDataTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  width: 100%;
+  color: rgb(0, 0, 0, 0.7);
+}
+
+.pageRequestDataTitle h3 {
+  width: 15%;
+}
+
+.timeStampContainer {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  color: hsl(0, 0%, 56%);
+  margin-top: 0.25rem;
+}
+
+.priorityHigh {
+  color: hsl(0, 100%, 50%);
+  background-color: hsl(0, 100%, 50%, 0.2);
+  padding-right: 0.25rem;
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+.priorityMedium {
+  color: hsl(60, 100%, 32%);
+  background-color: hsl(60, 100%, 50%, 0.2);
+  padding-right: 0.25rem;
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.priorityLow {
+  color: hsl(120, 100%, 29%);
+  background-color: hsl(120, 100%, 50%, 0.2);
+  padding-right: 0.25rem;
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageRequestPatient {
+  display: flex;
+}
+
+.pageRequestPatient h3 {
+  width: 15%;
+}
+
+.pageRequestPatient p {
+  font-size: 0.9rem;
+  color: hsl(232, 55%, 58%);
+}
+
+.pageRequestPatient p:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: hsl(232, 55%, 58%);
+}
+
+.pageRequestDoctor {
+  display: flex;
+}
+.pageRequestDoctor h3 {
+  width: 15%;
+}
+
+.pageRequestDoctor p {
+  font-size: 0.9rem;
+  color: hsl(232, 55%, 58%);
+}
+
+.pageRequestDoctor p:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: hsl(232, 55%, 58%);
+}
+
+.pageRequestType {
+  display: flex;
+}
+.pageRequestType h3 {
+  width: 15%;
+}
+
+.pageRequestStatus {
+  display: flex;
+}
+.pageRequestStatus h3 {
+  width: 15%;
+}
+
+.pageRequestPriority {
+  display: flex;
+}
+.pageRequestPriority h3 {
+  width: 15%;
+}
+
+.pageRequestDescription {
+  display: flex;
+}
+.pageRequestDescription h3 {
+  width: 15%;
+}
+
+.requestDescription {
+  font-size: 0.9rem;
+  color: hsl(232, 55%, 58%);
+  width: 85%;
+  padding-inline: 0.5rem;
+  padding-block: 0.3rem;
+}
+
+.pageRequestAttachments {
+  border: 1px solid hsl(232, 55%, 58%);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 105%;
+}
+
+.pageRequestAttachments h3 {
+  background-color: hsl(232, 55%, 58%);
+  padding: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.pageResponseAction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem;
+}
+
+.approveButton {
+  display: flex;
+  width: 8rem;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: hsl(232, 55%, 58%);
+  padding: 0.25rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid hsl(232, 55%, 58%);
+  transition: all 0.2s ease-in-out;
+}
+.approveButton:hover {
+  cursor: pointer;
+  background-color: hsl(232, 55%, 58%);
+  color: white;
+}
+
+.rejectButton {
+  display: flex;
+  width: 8rem;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: hsl(0, 100%, 39%);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid hsl(0, 100%, 39%);
+  transition: all 0.2s ease-in-out;
+}
+.rejectButton:hover {
+  cursor: pointer;
+  background-color: hsl(0, 100%, 39%);
+  color: white;
+}
+
+.forwardButton {
+  display: flex;
+  width: 8rem;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: hsl(232, 55%, 58%);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid hsl(232, 55%, 58%);
+  transition: all 0.2s ease-in-out;
+}
+.forwardButton:hover {
+  cursor: pointer;
+  background-color: hsl(232, 55%, 58%);
+  color: white;
+}

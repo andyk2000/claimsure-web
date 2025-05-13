@@ -1,61 +1,15 @@
 "use client";
 
-import { Icon } from "@iconify/react/dist/iconify.js";
 import styles from "./page.module.css";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { getRequestData } from "./action";
-
-interface RequestType {
-  id: number;
-  title: string;
-  priority: string;
-  patientId: number;
-  patientName: string;
-  status: string;
-}
-
-// const priorityRange = [
-//   {
-//     id: 1,
-//     color: "rgb(3, 185, 58)",
-//   },
-//   {
-//     id: 2,
-//     color: "rgb(231, 227, 1)",
-//   },
-//   {
-//     id: 3,
-//     color: "rgb(189, 0, 0)",
-//   },
-// ];
+import { useRouter } from "next/navigation";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function Tracking() {
-  const [requestData, setRequestData] = useState<RequestType>();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const getInitialData = async () => {
-      const token = localStorage.getItem("token") || "";
-      const idString = searchParams.get("id");
-      if (idString) {
-        const results = await getRequestData(idString, token);
-        if (results.data && results.success) {
-          setRequestData({
-            id: results.data.name,
-            title: results.data.title,
-            patientId: results.data.patientId,
-            patientName: results.data.patientName,
-            priority: results.data.priority,
-            status: results.data.status,
-          });
-        }
-      }
-    };
-
-    getInitialData();
-    console.log(requestData);
-  }, []);
+  const router = useRouter();
+  
+  const handleBack = () => {
+    router.back();
+  };
   
   return (
     <div className={styles.pageContainer}>
@@ -66,6 +20,7 @@ export default function Tracking() {
           height="25"
           className={styles.backButton}
           color="#242e8f"
+          onClick={handleBack}
         />
         <h2 className={styles.pageTitle}>Request Status</h2>
         <Icon
@@ -170,3 +125,4 @@ export default function Tracking() {
     </div>
   );
 }
+

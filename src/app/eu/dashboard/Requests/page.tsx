@@ -105,3 +105,7 @@ export default function Requests() {
     </div>
   );
 }
+
+function handleClick(id: number): void {
+  throw new Error("Function not implemented.");
+}
