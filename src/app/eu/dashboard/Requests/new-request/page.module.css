@@ -1,271 +1,432 @@
 .pageContainer {
-  width: 105%;
-  height: 100vh;
-  margin-right: 1rem;
-}
-
-.backButton {
-  margin-left: 0.5rem;
-  cursor: pointer;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
-  padding-top: 1rem;
-  padding-bottom: 1.5rem;
-  padding-left: 0.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
-.moreButton {
-  cursor: pointer;
+.backLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #242e8f;
+  margin-right: 1rem;
 }
 
-.formContainer {
-  width: 97%;
+.backButton {
+  transition: transform 0.2s;
+}
+
+.backLink:hover .backButton {
+  transform: translateX(-3px);
+}
+
+.pageTitle {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.contentContainer {
   display: flex;
   flex-direction: column;
-  margin-inline: 1rem;
-  margin-top: 1rem;
+  gap: 2rem;
 }
 
-.titleSection {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.inputLabel {
-  font-weight: 500;
-  font-size: 1rem;
-  color: #5a6acf;
-}
-
-.inputFieldSection {
-  width: 85%;
-}
-
-.fieldInput {
-  width: 100%;
-  background: transparent;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 1rem;
-  padding-inline: 0.5rem;
-  padding-block: 0.2rem;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #5a6acf;
+/* Patient Section */
+.patientContainer {
+  background-color: white;
   border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
 }
 
-.fieldInputDisabled {
-  width: 100%;
-  background: transparent;
-  color: #5a6acf;
-  background-color: #e6e8ec;
-  font-size: 1rem;
-  padding-inline: 0.5rem;
-  padding-block: 0.2rem;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #5a6acf;
-  border-radius: 0.5rem;
-}
-
-.smallFieldInput {
-  width: 5.5rem;
-  background: transparent;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 1rem;
-  padding-inline: 0.5rem;
-  padding-block: 0.2rem;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #5a6acf;
-  border-radius: 0.5rem;
-}
-
-.smallFieldInputDisabled {
-  width: 5.5rem;
-  background: transparent;
-  color: #5a6acf;
-  background-color: #e6e8ec;
-  font-size: 1rem;
-  padding-inline: 0.5rem;
-  padding-block: 0.2rem;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #5a6acf;
-  border-radius: 0.5rem;
-}
-
-.errorMessage {
-  color: rgb(204, 0, 0);
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.patientSection {
-  padding-top: 1rem;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+.patientForm {
+  margin-bottom: 1.5rem;
 }
 
 .patientIdSection {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
-.patientCheckBttn {
-  background: #5a6acf;
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.inputLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+
+.inputWithButton {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #242e8f;
+  box-shadow: 0 0 0 3px rgba(36, 46, 143, 0.1);
+}
+
+.selectField {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  background-color: white;
+  transition: border-color 0.15s ease-in-out;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+}
+
+.selectField:focus {
+  outline: none;
+  border-color: #242e8f;
+  box-shadow: 0 0 0 3px rgba(36, 46, 143, 0.1);
+}
+
+.textareaField {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.textareaField:focus {
+  outline: none;
+  border-color: #242e8f;
+  box-shadow: 0 0 0 3px rgba(36, 46, 143, 0.1);
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #242e8f;
   color: white;
-  font-size: 0.8rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.searchButton:hover {
+  background-color: #1c2472;
+}
+
+.searchButton:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.patientDetails {
+  margin-top: 1.5rem;
+}
+
+.patientCard {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  padding: 1rem;
+}
+
+.patientInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.patientName {
+  font-size: 1.125rem;
   font-weight: 600;
-  padding: 0.5rem;
-  margin-left: 1rem;
+  color: #111827;
+  margin: 0;
+}
+
+.patientMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.patientMetaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+/* Request Section */
+.requestContainer {
+  background-color: white;
   border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.requestForm {
+  margin-bottom: 1.5rem;
+}
+
+.fileUploadContainer {
+  margin-top: 0.5rem;
+}
+
+.fileUploadBox {
+  position: relative;
+  border: 2px dashed #d1d5db;
+  border-radius: 0.5rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.fileUploadBox:hover {
+  border-color: #242e8f;
+}
+
+.fileInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
   cursor: pointer;
 }
 
-.patientNameSection {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-}
-
-.ageSection {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-}
-
-.sexSection {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-}
-
-.requestSection {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-}
-
-.requestTypeSection {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-}
-
-.requestPriority {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-}
-
-.priorityLow {
-  color: rgb(3, 185, 58);
-  font-weight: 520;
-}
-
-.priorityMedium {
-  color: rgb(231, 227, 1);
-  font-weight: 520;
-}
-
-.priorityHigh {
-  color: rgb(189, 0, 0);
-  font-weight: 520;
-}
-
-.fieldAreaInput {
-  width: 118%;
-  background: transparent;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 1rem;
-  padding-inline: 0.5rem;
-  padding-block: 0.2rem;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #5a6acf;
-  border-radius: 0.5rem;
-}
-
-.requestDocumentSection {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-}
-
-.mediumFieldInput {
-  width: 20rem;
-  background: transparent;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 1rem;
-  padding-inline: 0.5rem;
-  padding-block: 0.2rem;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #5a6acf;
-  border-radius: 0.5rem;
-}
-
-.submitButton {
-  background-color: #5a6acf;
-  color: white;
-  font-size: 1rem;
-  width: fit-content;
-  padding-inline: 2rem;
-  padding-block: 0.25rem;
-  border-radius: 0.25rem;
-  align-self: end;
-  margin-block: 2rem;
-}
-
-.attachmentPreviewSection {
-  width: 100%;
-  display: flex;
-  padding-bottom: 1rem;
-  margin-top: 1rem;
-  overflow-y: auto;
-}
-
-.attachmentImage {
-  width: 20rem;
-  height: auto;
-  border-radius: 0.5rem;
-  margin-right: 1rem;
-  border-style: solid;
-}
-
-.attachmentPreview {
+.fileUploadContent {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
 }
 
-.attachmentDelete {
+.uploadIcon {
+  font-size: 2rem;
+  color: #6b7280;
+}
+
+.fileUploadContent p {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.fileUploadHint {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.attachmentsList {
   margin-top: 1rem;
-  color: rgb(158, 0, 0);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.attachmentItem {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #f9fafb;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+}
+
+.fileIcon {
+  font-size: 1.25rem;
+  color: #4b5563;
+  margin-right: 0.5rem;
+}
+
+.fileName {
+  flex: 1;
+  font-size: 0.875rem;
+  color: #4b5563;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: #ef4444;
   cursor: pointer;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(158, 0, 0);
-  border-radius: 1rem;
+  padding: 0.25rem;
+  border-radius: 9999px;
 }
-.attachmentDelete:hover {
-  background-color: rgb(158, 0, 0);
+
+.removeButton:hover {
+  background-color: #fee2e2;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cancelButton {
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.cancelButton:hover {
+  background-color: #f3f4f6;
+}
+
+.cancelButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #242e8f;
   color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
 }
+
+.submitButton:hover {
+  background-color: #1c2472;
+}
+
+.submitButton:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.priorityLow {
+  color: #047857;
+}
+
+.priorityMedium {
+  color: #d97706;
+}
+
+.priorityHigh {
+  color: #dc2626;
+}
+
+.priorityUrgent {
+  color: #7f1d1d;
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .pageContainer {
+    padding: 1rem;
+  }
+  
+  .header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+  
+  .formActions {
+    flex-direction: column;
+  }
+  
+  .cancelButton, .submitButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

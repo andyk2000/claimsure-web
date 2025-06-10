@@ -1,113 +1,142 @@
 "use client";
 
-import styles from "./page.module.css";
-import { Icon } from "@iconify/react";
-// import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import clsx from "clsx";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-// import { useState, useEffect } from "react";
+import styles from "./layout.module.css";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import { useState, useEffect } from "react";
+import { getUserName, getUserInstitution, refreshUserData, logout } from "@/utils/auth";
 
 const pagePaths = {
   Dashboard: "/eu/dashboard",
-  Chat: "/eu/chat",
-  Invoices: "/eu/invoices",
+  Patients: "/eu/patients",
   Settings: "/eu/settings",
-  Help: "/eu/help",
-  Logout: "/",
 };
 
-export default function RootLayout({
+export default function EULayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const pathname = usePathname();
-  const [currentPath, setCurrentPath] = useState(pathname);
-  const handleClick = (path: string) => {
-    localStorage.removeItem("Authorization");
-    setCurrentPath(path);
+  const router = useRouter();
+  const currentPath = pathname;
+  const [userName, setUserName] = useState("Healthcare Provider");
+  const [institution, setInstitution] = useState("@HealthFacility");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadUserData = async () => {
+      setIsLoading(true);
+      
+      // Try to get user data from localStorage first
+      const name = getUserName();
+      const userInstitution = getUserInstitution();
+      
+      if (name) {
+        setUserName(name);
+      }
+      
+      if (userInstitution) {
+        setInstitution(`@${userInstitution}`);
+      }
+      
+      // Refresh user data from server in the background
+      await refreshUserData();
+      
+      // Update with fresh data if available
+      const refreshedName = getUserName();
+      const refreshedInstitution = getUserInstitution();
+      
+      if (refreshedName && refreshedName !== name) {
+        setUserName(refreshedName);
+      }
+      
+      if (refreshedInstitution && refreshedInstitution !== userInstitution) {
+        setInstitution(`@${refreshedInstitution}`);
+      }
+      
+      setIsLoading(false);
+    };
+    
+    loadUserData();
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    logout();
+    router.push("/login");
   };
 
   return (
-    <div className={styles.pageContainer}>
-      <div className={styles.sideBar}>
-        <div className={styles.uperSectionSideBar}>
-          <div className={styles.profileSection}>
-            <Icon
-              icon="ph:user-circle-thin"
-              style={{ color: "#242e8f" }}
-              fontSize={70}
-            />
-            <p className={styles.profileName}>Dr Bayingana JMV</p>
-            <p className={styles.profileInstitution}>@Pharmacare</p>
+    <ProtectedRoute allowedRoles={["doctor", "healthcare-provider", "end-user"]}>
+      <div className={styles.pageContainer}>
+        <div className={styles.sideBar}>
+          <div className={styles.uperSectionSideBar}>
+            <div className={styles.profileSection}>
+              <Icon
+                icon="ph:user-circle-thin"
+                style={{ color: "#242e8f" }}
+                fontSize={70}
+              />
+              {isLoading ? (
+                <div className={styles.loadingProfile}>
+                  <div className={styles.loadingBar}></div>
+                  <div className={styles.loadingBar}></div>
+                </div>
+              ) : (
+                <>
+                  <p className={styles.profileName}>{userName}</p>
+                  <p className={styles.profileInstitution}>{institution}</p>
+                </>
+              )}
+            </div>
+            <div className={styles.menuSection}>
+              <Link
+                className={clsx(styles.menuItem, {
+                  [styles.menuItemActive]: currentPath === pagePaths.Dashboard,
+                })}
+                href={pagePaths.Dashboard}
+              >
+                <Icon icon="ph:layout-duotone" fontSize={20} />
+                <p>Dashboard</p>
+              </Link>
+              <Link
+                className={clsx(styles.menuItem, {
+                  [styles.menuItemActive]: currentPath.includes(pagePaths.Patients),
+                })}
+                href={pagePaths.Patients}
+              >
+                <Icon icon="ph:user-list-duotone" fontSize={20} />
+                <p>Patients</p>
+              </Link>
+              <Link
+                className={clsx(styles.menuItem, {
+                  [styles.menuItemActive]: currentPath.includes(pagePaths.Settings),
+                })}
+                href={pagePaths.Settings}
+              >
+                <Icon icon="ph:gear-six-duotone" fontSize={20} />
+                <p>Settings</p>
+              </Link>
+            </div>
           </div>
-          <div className={styles.menuSection}>
-            <Link
-              className={clsx(styles.menuItem, {
-                [styles.menuItemActive]: currentPath === pagePaths.Dashboard,
-              })}
-              href={pagePaths.Dashboard}
-              onClick={() => handleClick(pagePaths.Dashboard)}
-            >
-              <Icon icon="uis:chart" width="20" height="20" />
-              <p className={styles.menuItemLabel}>Dashboard</p>
-            </Link>
-            <Link
-              className={clsx(styles.menuItem, {
-                [styles.menuItemActive]: currentPath === pagePaths.Chat,
-              })}
-              href={pagePaths.Chat}
-              onClick={() => handleClick(pagePaths.Chat)}
-            >
-              <Icon icon="bi:chat-dots-fill" width="20" height="20" />
-              <p className={styles.menuItemLabel}>Chat</p>
-            </Link>
-            <Link
-              className={clsx(styles.menuItem, {
-                [styles.menuItemActive]: currentPath === pagePaths.Invoices,
-              })}
-              href={pagePaths.Invoices}
-              onClick={() => handleClick(pagePaths.Invoices)}
-            >
-              <Icon icon="mingcute:wallet-fill" width="20" height="20" />
-              <p className={styles.menuItemLabel}>Invoices</p>
-            </Link>
-            <Link
-              className={clsx(styles.menuItem, {
-                [styles.menuItemActive]: currentPath === pagePaths.Settings,
-              })}
-              href={pagePaths.Settings}
-              onClick={() => handleClick(pagePaths.Settings)}
-            >
-              <Icon icon="tdesign:setting-1-filled" width="20" height="20" />
-              <p className={styles.menuItemLabel}>Settings</p>
-            </Link>
-            <Link
-              className={clsx(styles.menuItem, {
-                [styles.menuItemActive]: currentPath === pagePaths.Help,
-              })}
-              href={pagePaths.Help}
-              onClick={() => handleClick(pagePaths.Help)}
-            >
-              <Icon icon="basil:info-rect-solid" width="20" height="20" />
-              <p className={styles.menuItemLabel}>Help</p>
-            </Link>
+          <div className={styles.lowerSectionSideBar}>
+            <div className={styles.logoutButton} onClick={handleLogout}>
+              <Icon icon="ph:sign-out-duotone" fontSize={20} />
+              <p>Logout</p>
+            </div>
           </div>
         </div>
-        <Link
-          className={clsx(styles.menuItem, {
-            [styles.menuItemActive]: currentPath === pagePaths.Logout,
-          })}
-          href={pagePaths.Logout}
-          onClick={() => handleClick(pagePaths.Logout)}
-        >
-          <Icon icon="ic:twotone-log-out" width="20" height="20" />
-          <p className={styles.menuItemLabel}>Logout</p>
-        </Link>
+        <div className={styles.mainContent}>
+          {children}
+        </div>
       </div>
-      <div className={styles.children}>{children}</div>
-    </div>
+    </ProtectedRoute>
   );
 }
+
+

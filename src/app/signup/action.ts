@@ -35,8 +35,8 @@ const getMDFs = async () => {
 };
 
 const createUser = async (user: User) => {
-  const postLink = `${config.backend}home/signup/`;
-
+  const postLink = `${config.backend}/home/signup`;
+  console.log(postLink);
   try {
     const response = await axios.post(postLink, user);
     noStore();

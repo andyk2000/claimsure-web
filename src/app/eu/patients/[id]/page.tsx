@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import styles from "./page.module.css";
+import { getPatientDetails } from "./action";
+import Swal from "sweetalert2";
 
 interface PatientData {
   id: number;
@@ -27,27 +29,65 @@ export default function PatientDetails({ params }: { params: { id: string } }) {
   
   const [loading, setLoading] = useState(true);
   const [patient, setPatient] = useState<PatientData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Simulate API call to get patient details
-    setTimeout(() => {
-      setPatient({
-        id: patientId,
-        name: ["John Smith", "Sarah Johnson", "Michael Brown", "Emily Davis", "Robert Wilson", "Jennifer Martinez"][patientId - 1] || `Patient ${patientId}`,
-        age: 30 + patientId,
-        gender: patientId % 2 === 0 ? "Female" : "Male",
-        dateOfBirth: `${1970 + patientId}-05-15`,
-        bloodType: ["A+", "B-", "O+", "AB+", "A-", "O-"][patientId - 1] || "Unknown",
-        insuranceId: `INS-${10000 + patientId}`,
-        contactNumber: `(555) ${100 + patientId}-${1000 + patientId}`,
-        email: `patient${patientId}@example.com`,
-        address: `${100 + patientId} Health Street, Medical City`,
-        allergies: patientId % 3 === 0 ? ["Penicillin", "Peanuts"] : patientId % 2 === 0 ? ["Latex", "Shellfish"] : ["None"],
-        currentMedications: patientId % 2 === 0 ? ["Lisinopril", "Metformin"] : ["Atorvastatin", "Levothyroxine"],
-        status: patientId === 5 ? "Inactive" : "Active"
-      });
-      setLoading(false);
-    }, 1000);
+    const fetchPatientDetails = async () => {
+      setLoading(true);
+      try {
+        const token = localStorage.getItem("token") || "";
+        const result = await getPatientDetails(patientId, token);
+        
+        if (result.success) {
+          setPatient(result.data);
+        } else {
+          setError(result.message || "Failed to fetch patient details");
+          // Fallback to mock data if in development
+          if (process.env.NODE_ENV === 'development') {
+            setPatient({
+              id: patientId,
+              name: ["John Smith", "Sarah Johnson", "Michael Brown", "Emily Davis", "Robert Wilson", "Jennifer Martinez"][patientId - 1] || `Patient ${patientId}`,
+              age: 30 + patientId,
+              gender: patientId % 2 === 0 ? "Female" : "Male",
+              dateOfBirth: `${1970 + patientId}-05-15`,
+              bloodType: ["A+", "B-", "O+", "AB+", "A-", "O-"][patientId - 1] || "Unknown",
+              insuranceId: `INS-${10000 + patientId}`,
+              contactNumber: `(555) ${100 + patientId}-${1000 + patientId}`,
+              email: `patient${patientId}@example.com`,
+              address: `${100 + patientId} Health Street, Medical City`,
+              allergies: patientId % 3 === 0 ? ["Penicillin", "Peanuts"] : patientId % 2 === 0 ? ["Latex", "Shellfish"] : ["None"],
+              currentMedications: patientId % 2 === 0 ? ["Lisinopril", "Metformin"] : ["Atorvastatin", "Levothyroxine"],
+              status: patientId === 5 ? "Inactive" : "Active"
+            });
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching patient details:", err);
+        setError("An unexpected error occurred");
+        // Fallback to mock data if in development
+        if (process.env.NODE_ENV === 'development') {
+          setPatient({
+            id: patientId,
+            name: ["John Smith", "Sarah Johnson", "Michael Brown", "Emily Davis", "Robert Wilson", "Jennifer Martinez"][patientId - 1] || `Patient ${patientId}`,
+            age: 30 + patientId,
+            gender: patientId % 2 === 0 ? "Female" : "Male",
+            dateOfBirth: `${1970 + patientId}-05-15`,
+            bloodType: ["A+", "B-", "O+", "AB+", "A-", "O-"][patientId - 1] || "Unknown",
+            insuranceId: `INS-${10000 + patientId}`,
+            contactNumber: `(555) ${100 + patientId}-${1000 + patientId}`,
+            email: `patient${patientId}@example.com`,
+            address: `${100 + patientId} Health Street, Medical City`,
+            allergies: patientId % 3 === 0 ? ["Penicillin", "Peanuts"] : patientId % 2 === 0 ? ["Latex", "Shellfish"] : ["None"],
+            currentMedications: patientId % 2 === 0 ? ["Lisinopril", "Metformin"] : ["Atorvastatin", "Levothyroxine"],
+            status: patientId === 5 ? "Inactive" : "Active"
+          });
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPatientDetails();
   }, [patientId]);
 
   const handleBack = () => {
@@ -67,6 +107,19 @@ export default function PatientDetails({ params }: { params: { id: string } }) {
       <div className={styles.loadingContainer}>
         <div className={styles.spinner}></div>
         <p>Loading patient details...</p>
+      </div>
+    );
+  }
+
+  if (!patient && error) {
+    return (
+      <div className={styles.errorContainer}>
+        <Icon icon="ph:warning" width="48" height="48" color="#ef4444" />
+        <h2>Error Loading Patient</h2>
+        <p>{error}</p>
+        <button className={styles.backButton} onClick={handleBack}>
+          Go Back
+        </button>
       </div>
     );
   }
@@ -203,3 +256,5 @@ export default function PatientDetails({ params }: { params: { id: string } }) {
     </div>
   );
 }
+
+

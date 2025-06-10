@@ -1,196 +1,165 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import styles from "./page.module.css";
 import Chart from "@/components/Chart";
-import { navigateNewRequest } from "./action";
 
 export default function Dashboard() {
+  const router = useRouter();
+  
+  const navigateNewRequest = () => {
+    router.push("/eu/dashboard/Requests/new-request");
+  };
+
   return (
     <div className={styles.main}>
       <div className={styles.headerSection}>
         <div className={styles.headerLeftSection}>
-          <p>Welcome back, Dr Bayingana</p>
+          <h1 className={styles.pageTitle}>Healthcare Provider Dashboard</h1>
+          <p className={styles.pageSubtitle}>Request overview and statistics</p>
         </div>
-        <button className={styles.newAppealButton} onClick={navigateNewRequest}>
+        <button className={styles.newRequestButton} onClick={navigateNewRequest}>
+          <Icon icon="ph:plus" width="20" height="20" />
           New Request
         </button>
       </div>
-      <div className={styles.mainSection}>
-        <div className={styles.mainLeft}>
-          <div className={styles.cardSection}>
-            <div className={styles.cardContainer}>
-              <Icon
-                icon="ph:thumbs-up"
-                width="25"
-                height="25"
-                color="#242e8f"
-              />
-              <div className={styles.cardTextContainer}>
-                <p className={styles.cardText}>Approved requests</p>
-                <div className={styles.cardInfo}>
-                  <p className={styles.approved}>23</p>
-                  <div className={styles.cardTextApproved}>
-                    <Icon icon="ph:caret-up-fill" width="25" height="25" />
-                    <p>4 requests</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.cardContainer}>
-              <Icon
-                icon="ph:thumbs-down"
-                width="25"
-                height="25"
-                color="#242e8f"
-              />
-              <div className={styles.cardTextContainer}>
-                <p className={styles.cardText}>Denied requests</p>
-                <div className={styles.cardInfo}>
-                  <p className={styles.approved}>4</p>
-                  <div className={styles.cardTextDenied}>
-                    <Icon icon="ph:caret-up-fill" width="25" height="25" />
-                    <p>2 requests</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.cardContainerLast}>
-              <Icon
-                icon="ph:arrows-clockwise"
-                width="25"
-                height="25"
-                color="#242e8f"
-              />
-              <div className={styles.cardTextContainer}>
-                <p className={styles.cardText}>Pending requests</p>
-                <div className={styles.cardInfo}>
-                  <p className={styles.approved}>11</p>
-                  <div className={styles.cardTextDenied}>
-                    <Icon
-                      icon="ph:dots-three-circle-light"
-                      width="25"
-                      height="25"
-                      color="rgba(0,0,0,0.8)"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+      
+      <div className={styles.statsGrid}>
+        <div className={styles.statCard}>
+          <div className={styles.statIconContainer} style={{ backgroundColor: "#dcfce7" }}>
+            <Icon icon="ph:thumbs-up" width="24" height="24" color="#16a34a" />
           </div>
-          <div className={styles.visualizationSection}>
-            <div className={styles.chartSection}>
-              <h2>Monthly approval-Chart</h2>
-              <div className={styles.chartContainer}>
-                <Chart />
-              </div>
-            </div>
-            <div className={styles.chartDescriptionSection}>
-              <div className={styles.dropdownContainer}>
-                <p>Period Covered:</p>
-                <select
-                  id="dropdown"
-                  name="options"
-                  className={styles.dropdownSelector}
-                >
-                  <option value="option1">3 Months</option>
-                  <option value="option2">4 Months</option>
-                  <option value="option3">6 months</option>
-                  <option value="option4">1 year</option>
-                </select>
-              </div>
-              <div>
-                <h2 className={styles.descriptionTitle}>Description</h2>
-                <p className={styles.descriptonTotalRequest}>
-                  Total Request Proccessed: 2034
-                </p>
-                <div className={styles.descriptionDetails}>
-                  <Icon
-                    icon="ph:arrow-up"
-                    width="16"
-                    height="16"
-                    color="#00be13"
-                  />
-                  <p>
-                    <span>2.1%</span> vs last month
-                  </p>
-                </div>
-                <div className={styles.legend}>
-                  <Icon
-                    icon="ph:dot-outline-fill"
-                    width="30"
-                    height="30"
-                    color="#5A6ACF"
-                  />
-                  <p> Approved</p>
-                </div>
-                <div className={styles.legend}>
-                  <Icon
-                    icon="ph:dot-outline-fill"
-                    width="30"
-                    height="30"
-                    color="#E6E8EC"
-                  />
-                  <p> Denied</p>
-                </div>
-              </div>
+          <div className={styles.statInfo}>
+            <h3 className={styles.statTitle}>Approved Requests</h3>
+            <p className={styles.statValue}>23</p>
+            <div className={styles.statTrend}>
+              <Icon icon="ph:arrow-up" width="16" height="16" color="#16a34a" />
+              <span>8% vs last month</span>
             </div>
           </div>
         </div>
-        <div className={styles.mainright}>
-          <div className={styles.notificationHeader}>
-            <div className={styles.notificationTitle}>
-              <Icon
-                icon="ph:bell-fill"
-                width="30"
-                height="30"
-                color="#5A6ACF"
-              />
-              <h2>Notifications</h2>
-            </div>
-            <div className={styles.moreNotification}>
-              <p>See All</p>
-              <Icon icon="ph:caret-double-right" width="20" height="20" />
+        
+        <div className={styles.statCard}>
+          <div className={styles.statIconContainer} style={{ backgroundColor: "#fee2e2" }}>
+            <Icon icon="ph:thumbs-down" width="24" height="24" color="#dc2626" />
+          </div>
+          <div className={styles.statInfo}>
+            <h3 className={styles.statTitle}>Denied Requests</h3>
+            <p className={styles.statValue}>5</p>
+            <div className={styles.statTrend}>
+              <Icon icon="ph:arrow-down" width="16" height="16" color="#16a34a" />
+              <span>3% vs last month</span>
             </div>
           </div>
-          <div className={styles.notificationContainer}>
-            <p>No notification yet</p>
+        </div>
+        
+        <div className={styles.statCard}>
+          <div className={styles.statIconContainer} style={{ backgroundColor: "#fef3c7" }}>
+            <Icon icon="ph:clock" width="24" height="24" color="#d97706" />
+          </div>
+          <div className={styles.statInfo}>
+            <h3 className={styles.statTitle}>Pending Requests</h3>
+            <p className={styles.statValue}>11</p>
+            <div className={styles.statTrend}>
+              <Icon icon="ph:arrow-up" width="16" height="16" color="#dc2626" />
+              <span>12% vs last month</span>
+            </div>
+          </div>
+        </div>
+        
+        <div className={styles.statCard}>
+          <div className={styles.statIconContainer} style={{ backgroundColor: "#e0e7ff" }}>
+            <Icon icon="ph:clock-countdown" width="24" height="24" color="#4f46e5" />
+          </div>
+          <div className={styles.statInfo}>
+            <h3 className={styles.statTitle}>Avg. Response Time</h3>
+            <p className={styles.statValue}>2.3 days</p>
+            <div className={styles.statTrend}>
+              <Icon icon="ph:arrow-down" width="16" height="16" color="#16a34a" />
+              <span>10% vs last month</span>
+            </div>
           </div>
         </div>
       </div>
-      <div className={styles.latestList}>
-        <div className={styles.listTitleContainer}>
-          <p className={styles.listTitle}>Latest Request</p>
-          <div className={styles.moreRequests}>
-            <p>See All</p>
-            <Icon icon="ph:caret-double-right" width="20" height="20" />
+      
+      <div className={styles.chartsSection}>
+        <div className={styles.chartCard}>
+          <div className={styles.chartHeader}>
+            <h2 className={styles.chartTitle}>Monthly Approval Chart</h2>
+            <div className={styles.chartControls}>
+              <select className={styles.chartSelect}>
+                <option value="3months">Last 3 Months</option>
+                <option value="6months">Last 6 Months</option>
+                <option value="1year">Last Year</option>
+              </select>
+            </div>
+          </div>
+          <div className={styles.chartContainer}>
+            <Chart />
           </div>
         </div>
-        <div className={styles.listHeader}>
-          <p className={styles.requestTitle}>Request Title</p>
-          <p className={styles.requestName}>patient Name</p>
-          <div className={styles.titleMiddle}>
-            <p className={styles.requestPriority}>Priority</p>
-            <p className={styles.requestStatus}>Status</p>
-            <p className={styles.requestAction}>action</p>
+        
+        <div className={styles.recentActivityCard}>
+          <div className={styles.activityHeader}>
+            <h2 className={styles.activityTitle}>Recent Requests</h2>
+            <button className={styles.viewAllButton} onClick={() => router.push("/eu/dashboard/Requests")}>
+              View All
+              <Icon icon="ph:arrow-right" width="16" height="16" />
+            </button>
           </div>
-        </div>
-        <div className={styles.listContent}>
-          <div className={styles.listRecord}>
-            <p className={styles.rowTitle}>request for dialisis</p>
-            <p className={styles.rowName}>Marianne</p>
-            <div className={styles.titleMiddle}>
-              <div className={styles.rowPriority}>
-                <Icon
-                  icon="ph:dot-outline-fill"
-                  width="25"
-                  height="25"
-                  color="rgb(189, 0, 0)"
-                />
-                <p>high</p>
+          
+          <div className={styles.activityList}>
+            <div className={styles.activityItem}>
+              <div className={styles.activityIcon} style={{ backgroundColor: "#dcfce7" }}>
+                <Icon icon="ph:check-circle" width="20" height="20" color="#16a34a" />
               </div>
-              <p className={styles.rowStatus}>pending</p>
-              <p className={styles.rowAction}>action</p>
+              <div className={styles.activityContent}>
+                <h4 className={styles.activityTitle}>Medication Request Approved</h4>
+                <p className={styles.activityTime}>Today, 10:30 AM</p>
+              </div>
+              <span className={styles.activityBadge} style={{ backgroundColor: "#dcfce7", color: "#16a34a" }}>
+                Approved
+              </span>
+            </div>
+            
+            <div className={styles.activityItem}>
+              <div className={styles.activityIcon} style={{ backgroundColor: "#fef3c7" }}>
+                <Icon icon="ph:clock" width="20" height="20" color="#d97706" />
+              </div>
+              <div className={styles.activityContent}>
+                <h4 className={styles.activityTitle}>Specialist Consultation Request</h4>
+                <p className={styles.activityTime}>Yesterday, 2:15 PM</p>
+              </div>
+              <span className={styles.activityBadge} style={{ backgroundColor: "#fef3c7", color: "#d97706" }}>
+                Pending
+              </span>
+            </div>
+            
+            <div className={styles.activityItem}>
+              <div className={styles.activityIcon} style={{ backgroundColor: "#fee2e2" }}>
+                <Icon icon="ph:x-circle" width="20" height="20" color="#dc2626" />
+              </div>
+              <div className={styles.activityContent}>
+                <h4 className={styles.activityTitle}>Imaging Request Denied</h4>
+                <p className={styles.activityTime}>May 15, 9:45 AM</p>
+              </div>
+              <span className={styles.activityBadge} style={{ backgroundColor: "#fee2e2", color: "#dc2626" }}>
+                Denied
+              </span>
+            </div>
+            
+            <div className={styles.activityItem}>
+              <div className={styles.activityIcon} style={{ backgroundColor: "#dcfce7" }}>
+                <Icon icon="ph:check-circle" width="20" height="20" color="#16a34a" />
+              </div>
+              <div className={styles.activityContent}>
+                <h4 className={styles.activityTitle}>Laboratory Tests Approved</h4>
+                <p className={styles.activityTime}>May 12, 11:20 AM</p>
+              </div>
+              <span className={styles.activityBadge} style={{ backgroundColor: "#dcfce7", color: "#16a34a" }}>
+                Approved
+              </span>
             </div>
           </div>
         </div>
@@ -198,3 +167,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+
